@@ -343,7 +343,7 @@ EOF
 cat << EOF >/etc/systemd/system/caddy.service
 [Unit]
 Description=Caddy2-naiveproxy
-Documentation=https://gitlab.com/rwkgyg/naiveproxy-yg
+Documentation=https://caddyserver.com/docs/
 After=network.target network-online.target
 Requires=network-online.target
 [Service]
@@ -506,7 +506,7 @@ fi
 wget -N https://raw.githubusercontent.com/fy-deng/naiveproxy/main/naiveproxy.sh && bash naiveproxy.sh
 chmod +x /root/naiveproxy.sh 
 ln -sf /root/naiveproxy.sh /usr/bin/na
-green "naiveproxy-yg安装脚本升级成功" && na
+green "naiveproxy安装脚本升级成功" && na
 }
 
 upnaive(){
@@ -596,25 +596,13 @@ journalctl -u caddy --output cat -f
 start_menu(){
 naiveproxystatus
 clear
-green "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"           
-echo -e "${bblue} ░██     ░██      ░██ ██ ██         ░█${plain}█   ░██     ░██   ░██     ░█${red}█   ░██${plain}  "
-echo -e "${bblue}  ░██   ░██      ░██    ░░██${plain}        ░██  ░██      ░██  ░██${red}      ░██  ░██${plain}   "
-echo -e "${bblue}   ░██ ░██      ░██ ${plain}                ░██ ██        ░██ █${red}█        ░██ ██  ${plain}   "
-echo -e "${bblue}     ░██        ░${plain}██    ░██ ██       ░██ ██        ░█${red}█ ██        ░██ ██  ${plain}  "
-echo -e "${bblue}     ░██ ${plain}        ░██    ░░██        ░██ ░██       ░${red}██ ░██       ░██ ░██ ${plain}  "
-echo -e "${bblue}     ░█${plain}█          ░██ ██ ██         ░██  ░░${red}██     ░██  ░░██     ░██  ░░██ ${plain}  "
-green "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
-#white "甬哥Gitlab项目  ：gitlab.com/rwkgyg"
-#white "甬哥blogger博客 ：ygkkk.blogspot.com"
-#white "甬哥YouTube频道 ：www.youtube.com/c/甬哥侃侃侃kkkyg"
-green "naiveproxy-yg脚本安装成功后，再次进入脚本的快捷方式为 na"
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 green "  1. 安装naiveproxy（必选）" 
 green "  2. 卸载naiveproxy"
 white "----------------------------------------------------------------------------------"
 green "  3. 变更配置（独家多端口复用功能、主端口、用户名、密码、证书、伪装网页）" 
 green "  4. 关闭、开启、重启naiveproxy"   
-green "  5. 更新naiveproxy-yg安装脚本"
+green "  5. 更新naiveproxy安装脚本"
 green "  6. 更新naiveproxy内核版本"
 white "----------------------------------------------------------------------------------"
 green "  7. 显示当前naiveproxy分享链接、V2rayN配置文件、二维码"
@@ -626,10 +614,10 @@ green "  0. 退出脚本"
 red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 if [[ -n $(systemctl status caddy 2>/dev/null | grep -w active) && -f '/etc/caddy/Caddyfile' ]]; then
 if [ "${naygV}" = "${remoteV}" ]; then
-echo -e "当前 naiveproxy-yg 安装脚本版本号：${bblue}${naygV}${plain} ，已是最新版本\n"
+echo -e "当前 naiveproxy 安装脚本版本号：${bblue}${naygV}${plain} ，已是最新版本\n"
 else
-echo -e "当前 naiveproxy-yg 安装脚本版本号：${bblue}${naygV}${plain}"
-echo -e "检测到最新 naiveproxy-yg 安装脚本版本号：${yellow}${remoteV}${plain} ，可选择5进行更新\n"
+echo -e "当前 naiveproxy 安装脚本版本号：${bblue}${naygV}${plain}"
+echo -e "检测到最新 naiveproxy 安装脚本版本号：${yellow}${remoteV}${plain} ，可选择5进行更新\n"
 fi
 if [ "$ygvsion" = "$lastvsion" ]; then
 echo -e "当前 naiveproxy 已安装内核版本号（可选更新）：${bblue}${ygvsion}${plain} ，已是官方最新版本"
