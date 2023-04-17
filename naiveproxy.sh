@@ -210,14 +210,14 @@ rm -rf ~/.acme.sh acme.sh
 sed -i '/--cron/d' /etc/crontab
 [[ -z $(/root/.acme.sh/acme.sh -v 2>/dev/null) ]] && green "acme.sh卸载完毕" || red "acme.sh卸载失败"
 sleep 2
-wget -N https://raw.githubusercontent.com/fy-deng/acme-2/main/acme.sh && bash acme.sh
+wget -N https://raw.githubusercontent.com/fy-deng/acme_1key/main/acme.sh && bash acme.sh
 ym=$(cat /etc/ssl/private/ca.log)
 if [[ ! -f /etc/ssl/private/cert.crt && ! -f /etc/ssl/private/private.key ]] && [[ ! -s /etc/ssl/private/cert.crt && ! -s /etc/ssl/private/private.key ]]; then
 red "证书申请失败，脚本退出" && exit
 fi
 fi
 else
-wget -N https://raw.githubusercontent.com/fy-deng/acme-2/main/acme.sh && bash acme.sh
+wget -N https://raw.githubusercontent.com/fy-deng/acme_1key/main/acme.sh && bash acme.sh
 ym=$(cat /etc/ssl/private/ca.log)
 if [[ ! -f /etc/ssl/private/cert.crt && ! -f /etc/ssl/private/private.key ]] && [[ ! -s /etc/ssl/private/cert.crt && ! -s /etc/ssl/private/private.key ]]; then
 red "证书申请失败，脚本退出" && exit
@@ -476,7 +476,7 @@ sussnaiveproxy
 }
 
 acme(){
-bash <(curl -L -s https://raw.githubusercontent.com/fy-deng/acme-2/main/acme.sh)
+bash <(curl -L -s https://raw.githubusercontent.com/fy-deng/acme_1key/main/acme.sh)
 }
 cfwarp(){
 wget -N --no-check-certificate https://gitlab.com/rwkgyg/cfwarp/raw/main/CFwarp.sh && bash CFwarp.sh
